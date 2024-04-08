@@ -46,11 +46,17 @@ require_once "config.php";
             <td><?php echo $billet['heureReservation']?></td>      
             <td><?php echo $billet['classe']?></td> 
             <td><?php echo $billet['statut']?></td>
-            <td><button class="btn btn-delete"><a href="updatebillet.php?id=<?php echo $billet['id']; ?>">Modifier</a></button></td>
-               <td><button class="btn btn-delete"><a href="deletebillet.php?id=<?php echo $billet['id']; ?>">Supprimer</a></button></td>
+            <td><button class="btn btn-delete"><a href="updatebillet.php?id=<?php echo $billet ['id']; ?>">Modifier</a></button></td>
+               <td><button class="btn btn-delete"><a href="deletebillet.php?id=<?php echo $billet ['idBillet']; ?>">Supprimer</a></button></td>
         </tr>
     <?php } ?>
 <?php } ?>
+<div class="from-row">
+    <div class="form-group">
+      <button><a href="index.php">Retour</a></button>
+    </div>
+</div>
+       
 
     
 <style>
