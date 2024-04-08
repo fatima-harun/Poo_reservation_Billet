@@ -10,7 +10,7 @@ require_once "statut.php";
 
 define('DB_SERVER', 'localhost');
 define('DB_USERNAME', 'root');
-define('DB_PASSWORD', 'Juin1706-*2000');
+define('DB_PASSWORD', '');
 // define('DB_PASSWORD', 'Juin1706-*2000');
 define('DB_NAME', 'reservationbillet');
 
