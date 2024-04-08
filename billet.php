@@ -1,10 +1,9 @@
 <?php
 error_reporting(E_ALL);
 
-require_once "config.php";
 require_once "client.php";
 class Billet implements Client{
-    private $connexion;
+private $connexion;
 private $prix;
 private $dateReservation;
 private $heureReservation;
@@ -80,7 +79,7 @@ public function addBillet($prix,$dateReservation,$heureReservation,$trajet,$date
         } 
     public function readBillet(){
         try{
-            $sql="SELECT b.prix,b.dateReservation,b.heureReservation,t.libelle AS trajet,dd.libelle AS datedepart,hd.libelle AS heuredepart,
+            $sql="SELECT b.id AS  idBillet ,b.prix,b.dateReservation,b.heureReservation,t.libelle AS trajet,dd.libelle AS datedepart,hd.libelle AS heuredepart,
         c.libelle AS classe,s.libelle AS statut
            FROM billet b
             INNER JOIN trajet t ON b.id_trajet = t.id
@@ -132,6 +131,34 @@ public function addBillet($prix,$dateReservation,$heureReservation,$trajet,$date
             }
         
           }
+
+
+          public function deleteBillet($id){
+
+            try {
+                  //requete pour supprimer un billet
+            $sql = "DELETE FROM billet WHERE id = :id";
+
+            //preparation de la requete 
+            $stmt = $this->connexion->prepare($sql);
+
+            // Liaison de la valeur de l'id au paramètre
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+            // Exécution de la requête
+             $stmt->execute();
+             
+             header("Location: readbillet.php");
+             exit();
+
+
+            } catch (PDOException $e) {
+                throw new Exception("ERREUR: Impossible de supprimer le billet. " . $e->getMessage());
+            }
+
+          
+          }
+          
 
     }
     
